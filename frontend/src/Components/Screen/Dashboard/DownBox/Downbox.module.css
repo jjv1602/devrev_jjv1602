@@ -1,0 +1,48 @@
+.par{
+    position: relative;
+    margin-left: 3%;
+}
+.topbar{
+    
+    width: 76vw;
+    margin-top: 4vh;
+    display: flex;
+    gap:12vh;
+    align-items: center;
+}
+
+.heading{
+    font-family: var(--main-font);
+    font-weight:bolder;
+    padding-left: 20px;
+    justify-self: flex-start;
+    flex-grow: 2;
+}
+
+.filter{
+    background-color: white;
+    width: 5vw;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+    border:solid gray 0.4px;
+}
+.filtergrp{
+    background-color: white;
+    width: 12vw;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+    border:solid gray 0.4px;
+}
+#filter{
+    font-family: var(--main-font);
+}
+
+.results{
+    margin-top: 3%;
+}

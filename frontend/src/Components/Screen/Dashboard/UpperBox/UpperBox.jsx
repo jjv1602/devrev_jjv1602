@@ -13,8 +13,9 @@ const UpperBox = (props) => {
     return (
         <div className={st.par}>
             <div className={st.srchpar}>
-                <Input placeholder='Search' width="80%" className={st.inp}
+                <Input placeholder='Search by name, author, genre ' width="80%" className={st.inp}
                     _placeholder={{ opacity: 1, color: 'gray.500' }}
+                    onChange={(e)=>props.typing(e.target.value)}
                 />
                 <Button size='md' style={{ backgroundColor: "#164bea", color: "white" }}>
                     <AiOutlineSearch></AiOutlineSearch>
@@ -22,7 +23,7 @@ const UpperBox = (props) => {
             </div>
             <div className={st.calendar}>
                 <AiOutlineCalendar size={"6vh"}></AiOutlineCalendar>
-                <text id={st["date"]}>{currentDate}</text>
+                <div id={st["date"]}>{currentDate}</div>
             </div>
         </div>
     )

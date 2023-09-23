@@ -1,0 +1,14 @@
+.par{
+    background-color: white;
+    height: 66vh;
+    width: 78vw;
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:5vh;
+    padding: 5%;
+    overflow-y:scroll;
+}
+.bk{
+    height: 25vh;
+    width: 12vw;
+}

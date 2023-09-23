@@ -14,23 +14,23 @@ const Navbar = (props) => {
         <div className={st.par}>
             <div className={st.nav}>
                 <div className={activeItem === 'Home' ? `${st.actnavbtn} ` : `${st.navbtn}`} onClick={() => handleItemClick('Home')}><BsFillClipboard2DataFill style={{ color: "#ffffff" }} size={"4vh"}></BsFillClipboard2DataFill>
-                    <text className={activeItem === 'Home' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Dashboard</text>
+                    <div className={activeItem === 'Home' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Dashboard</div>
                 </div>
 
                 <div className={activeItem === 'Brw' ? `${st.actnavbtn} active` : `${st.navbtn}`} onClick={() => handleItemClick('Brw')}><BsFillJournalBookmarkFill style={{ color: "#ffffff" }} size={"4vh"}></BsFillJournalBookmarkFill>
-                    <text className={activeItem === 'Brw' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Borrowed Books</text>
+                    <div className={activeItem === 'Brw' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Borrowed Books</div>
                 </div>
 
 
                 <div className={activeItem === 'Ovrd' ? `${st.actnavbtn} active` : `${st.navbtn}`} onClick={() => handleItemClick('Ovrd')}><AiOutlineFieldTime style={{ color: "#ffffff" }} size={"4vh"}></AiOutlineFieldTime>
-                    <text className={activeItem === 'Ovrd' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Overdue Books</text>
+                    <div className={activeItem === 'Ovrd' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Overdue Books</div>
                 </div>
 
 
-                <div className={activeItem === 'Cart' ? `${st.actnavbtn} active` : `${st.navbtn}`} onClick={() => handleItemClick('Cart')}><BsCart3 style={{ color: "#ffffff" }} size={"4vh"} ></BsCart3><text className={activeItem === 'Cart' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Cart</text></div>
+                <div className={activeItem === 'Cart' ? `${st.actnavbtn} active` : `${st.navbtn}`} onClick={() => handleItemClick('Cart')}><BsCart3 style={{ color: "#ffffff" }} size={"4vh"} ></BsCart3><div className={activeItem === 'Cart' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Cart</div></div>
 
 
-                <div className={activeItem === 'Profile' ? `${st.actnavbtn} active` : `${st.navbtn}`} onClick={() => handleItemClick('Profile')}><AiOutlineUser style={{ color: "#ffffff" }} size={"4vh"}></AiOutlineUser><text className={activeItem === 'Profile' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Profile</text>
+                <div className={activeItem === 'Profile' ? `${st.actnavbtn} active` : `${st.navbtn}`} onClick={() => handleItemClick('Profile')}><AiOutlineUser style={{ color: "#ffffff" }} size={"4vh"}></AiOutlineUser><div className={activeItem === 'Profile' ? `${st.actnavtxt} ` : `${st.navtxt}`}>Profile</div>
                 </div>
 
             </div>
