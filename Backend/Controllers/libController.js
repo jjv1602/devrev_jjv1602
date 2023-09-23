@@ -31,7 +31,7 @@ const addBook = expressAsyncHandler(async (req, res) => {
 const rent = expressAsyncHandler(async (req, res) => {
   try {
     // Taking user_id from jwt token 
-    console.log("sndandksandnk");
+    
     const user_id = req.user._id;
     const { book_id,rentalDate,expiryDate } = req.body;
 
