@@ -18,6 +18,12 @@ const bookSchema = mongoose.Schema(
             type: Date,
             required: true,
         },
+        poster: {
+            type: String,
+            required: true,
+            default:
+                "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+        },
         total_copies: {
             type:Number,
             required: true,

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const Book=require('./libModels');
-const Rentb = require('./rentalModels');
 const userSchema = mongoose.Schema(
     {
         name: {
@@ -21,7 +20,11 @@ const userSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        rented:[Rentb],
+        rented:[{
+            book:{type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
+            rentalDate:{type:Date},
+            expiryDate:{type:Date}}
+        ],
     },
     {
         timestamps: true,

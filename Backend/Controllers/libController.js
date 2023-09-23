@@ -17,12 +17,12 @@ const getBooksbyindividual = expressAsyncHandler(async (req, res) => {
 
 // Add new book in library
 const addBook = expressAsyncHandler(async (req, res) => {
-  const { book_name, book_author, book_genre, publish_date, total_copies, rating } = req.body;
-  const book = new Book({ book_name, book_author, book_genre, publish_date, total_copies, rating });
+  const { book_name, book_author, book_genre, publish_date,poster, total_copies, rating } = req.body;
+  const book = new Book({ book_name, book_author, book_genre, publish_date,poster,total_copies, rating });
 
-  await book.save(function (err, post) {
+  await book.save(function (err, book) {
     if (err) { return next(err) }
-    res.json(201, book)
+    res.status(201).json(book);
   });
 
 });
@@ -31,11 +31,13 @@ const addBook = expressAsyncHandler(async (req, res) => {
 const rent = expressAsyncHandler(async (req, res) => {
   try {
     // Taking user_id from jwt token 
+    console.log("sndandksandnk");
     const user_id = req.user._id;
     const { book_id,rentalDate,expiryDate } = req.body;
 
     // Adding book inside user database
     const user = await User.findById(user_id);
+    console.log(user);
     if (!user.rented.find(rental=>rental.book.toString()===book_id)) {
       const new_book={
         book:book_id,
@@ -47,18 +49,18 @@ const rent = expressAsyncHandler(async (req, res) => {
     } else {
       console.log("User has already rented");
     }
-
     // Adding user inside book database
     const book = await Book.findById(book_id);
+    console.log(book);
     if(!book.rentedby.includes(user_id)){
-      book.rented.push(user_id);
+      book.rentedby.push(user_id);
       await book.save();
     }else{
       console.log("User has already rented");
     }
-
   }catch(error){
     console.error(error.message);
+    throw error.message;
   }
 });
 
@@ -67,11 +69,12 @@ const returns_book= expressAsyncHandler(async (req, res) => {
   try {
     // Taking user_id from jwt token 
     const user_id = req.user._id;
-    const { book_id} = req.body;
-    
+    const {book_id} = req.body;
+
     // Removing book from user database
     const user = await User.findById(user_id);
-    const bookindx=user.rented.indexOf(rent=>rent.book.toString()===user_id);
+    console.log(user);
+    const bookindx=user.rented.findIndex((rent)=>rent.book.toString()===book_id);
     if(bookindx==-1){
       console.log("User already removed");
     }
@@ -81,18 +84,20 @@ const returns_book= expressAsyncHandler(async (req, res) => {
     }
 
     // Removing user from book database
-    const userindx=book.rentedby.indexOf(user_id);
     const book = await Book.findById(book_id);
+    console.log(book_id);
+    const userindx=book.rentedby.indexOf(user_id);
     if(userindx!==-1){
       book.rentedby.splice(userindx,1);
       await book.save();
     }
     else{
-      console.log("User already rented");
+      console.log("User removed from book db");
     }
-
+    res.status(200).json("Successful");
   }catch(error){
-    console.error(error.message);
+    console.log(error.message);
+    res.status(404).json(error.message);
   }
 });
 
