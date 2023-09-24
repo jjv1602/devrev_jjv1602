@@ -40,17 +40,9 @@ const rent = expressAsyncHandler(async (req, res) => {
     const user_id = req.user._id;
     const { book_id, rentalDate, expiryDate } = req.body;
 
-    console.log(req.body);
-    console.log("qweqeqe wqe qweqw eq w");
-    console.log("qweqeqe wqe qweqw eq w");
-    console.log("qweqeqe wqe qweqw eq w");
-    console.log("qweqeqe wqe qweqw eq w");
-    console.log("qweqeqe wqe qweqw eq w");
-    console.log("qweqeqe wqe qweqw eq w");
 
     // Adding book inside user database
     const user = await User.findById(user_id);
-    console.log(user);
     if (!user.rented.find(rental => rental.book.toString() === book_id)) {
       const new_book = {
         book: book_id,

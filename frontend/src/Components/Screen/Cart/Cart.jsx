@@ -19,7 +19,6 @@ const Cart = () => {
                 },
             };
             const { data } = await axios.get("/api/books/getwishlist", config);
-            console.log(data);
             var arr = data.wishlist.filter((e) => e.book_name.toLowerCase().includes(search.toLowerCase()));
             setSearchResults(arr);
         } catch (error) {

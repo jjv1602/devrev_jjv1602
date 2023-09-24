@@ -20,7 +20,7 @@ const Dashboard = () => {
       const { data } = await axios.get("/api/books", config);
       var arr=data.filter((e) => e.book_name.toLowerCase().includes(search.toLowerCase()));
       setSearchResults(arr);
-      console.log(arr);
+      // console.log(arr);
     } catch (error) {
       console.log(error.message);
     }

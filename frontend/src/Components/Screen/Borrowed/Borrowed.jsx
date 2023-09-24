@@ -19,7 +19,7 @@ const Borrowed = () => {
                 },
             };
             const { data } = await axios.get("/api/books/ind", config);
-            console.log(data);
+            
             var arr = data.rented.filter((e) => e.book.book_name.toLowerCase().includes(search.toLowerCase()));
             setSearchResults(arr);
         } catch (error) {

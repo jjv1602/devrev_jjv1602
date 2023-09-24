@@ -12,9 +12,6 @@ const Navbar = (props) => {
         setActiveItem(item);
     };
     const logouthandler=()=>{
-        console.log("clicked btn");
-        console.log("clicked btn");
-        console.log("clicked btn");
         localStorage.removeItem("userInfo");
         navigate('/');
     }

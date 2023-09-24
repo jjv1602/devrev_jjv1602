@@ -69,7 +69,7 @@ const Result = (props) => {
       console.log(error.message);
     }
   }
-  console.log(props.searchResults)
+  // console.log(props.searchResults)
   const [isOpen, setIsOpen] = useState({});
 
   // Function to open a modal for a specific book
