@@ -25,6 +25,7 @@ const userSchema = mongoose.Schema(
             rentalDate:{type:Date},
             expiryDate:{type:Date}}
         ],
+        wishlist:[{type: mongoose.Schema.Types.ObjectId, ref: 'Book'}],
     },
     {
         timestamps: true,

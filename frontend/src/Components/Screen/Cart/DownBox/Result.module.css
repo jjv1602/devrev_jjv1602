@@ -1,23 +1,22 @@
 .par{
     background-color: white;
-    height: 66vh;
+    height: 62vh;
     width: 78vw;
-    display: grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:5vh;
     padding: 5%;
     overflow-y:scroll;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
 }
-.bk{
-    height: 25vh;
-    width: 15vw;
-}
+
 .booktxt{
     font-family: var(--main-font);
     font-weight: bolder;
 }
 .booksub{
     font-family: var(--main-font);
-    font-weight: lighter;
-    font-size: 3vh;
+    font-weight:bolder;
+}
+.date{
+    display: flex;
+font-family: var(--main-font);
 }

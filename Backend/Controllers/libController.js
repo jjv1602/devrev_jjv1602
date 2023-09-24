@@ -63,12 +63,24 @@ const rent = expressAsyncHandler(async (req, res) => {
     } else {
       console.log("User has already rented");
     }
+
+    // Removing book from wishlist if exists
+    const bookindx = user.wishlist.findIndex((w) => w._id.toString() === book_id);
+    if (bookindx == -1) {
+      console.log("Book does not exist in filter");
+    }
+    else {
+      user.wishlist.splice(bookindx, 1);
+      await user.save();
+      console.log("Removed from wishlist");
+    }
     res.status(201).json("Successful");
   } catch (error) {
     console.error(error.message);
     res.status(400).json(error.message);
   }
 });
+
 
 // USER RETURNS A BOOK 
 const returns_book = expressAsyncHandler(async (req, res) => {
@@ -107,4 +119,42 @@ const returns_book = expressAsyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getBooks, getBooksbyindividual, addBook, rent, returns_book };
+// Adding book to wishlist 
+const wishlist = expressAsyncHandler(async (req, res) => {
+  try {
+    // Taking user_id from jwt token 
+
+    const user_id = req.user._id;
+    const { book_id} = req.body;
+
+    // Adding book inside user database
+    const user = await User.findById(user_id);
+    if (!user.wishlist.find(w => w.toString() === book_id)) {
+      user.wishlist.push(book_id);
+      await user.save();
+    } else {
+      console.log("User has already added in wishlist");
+    }
+    
+    res.status(201).json("Successful");
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json(error.message);
+  }
+});
+
+// Adding book to wishlist 
+const getwishlist = expressAsyncHandler(async (req, res) => {
+  try {
+    // Taking user_id from jwt token 
+
+    const user_id = req.user._id;   
+    const book = await User.findById(req.user._id).populate('wishlist');    
+    res.status(201).json(book);
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json(error.message);
+  }
+});
+module.exports = { getBooks, getBooksbyindividual, addBook, rent, returns_book,wishlist,getwishlist };

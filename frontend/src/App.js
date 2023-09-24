@@ -1,8 +1,11 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './Components/Screen/Dashboard/Dashboard';
 import { ChakraProvider } from '@chakra-ui/react'
-import Borrowed from './Components/Screen/Borrowed/Borrowed';
+import { LayoutGroupContext } from 'framer-motion';
+import { lazy } from 'react';
+const Borrowed = lazy(() => import('./Components/Screen/Borrowed/Borrowed'));
+const Cart  = lazy(() => import('./Components/Screen/Cart/Cart'));
+const Dashboard=lazy(()=>import('./Components/Screen/Dashboard/Dashboard'));
 function App() {
   return (
     <ChakraProvider>
@@ -10,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/borrowed" element={<Borrowed />} />
+          <Route path="/cart" element={<Cart/>}></Route>
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

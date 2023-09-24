@@ -3,7 +3,7 @@
     height: 66vh;
     width: 78vw;
     display: grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:5vh;
     padding: 5%;
     overflow-y:scroll;
@@ -11,4 +11,31 @@
 .bk{
     height: 25vh;
     width: 12vw;
+}
+.bookhd{
+    font-family: var(--main-font);
+}
+#badge{
+    font-family: var(--main-font);
+}
+
+#carticon{
+    justify-items: flex-end;
+}
+.booktxt{
+    font-family: var(--main-font);
+    font-weight: bolder;
+}
+.modpar{
+    display: flex;
+    flex-direction: column;
+}
+.modh{
+    font-family: var(--main-font);
+    display: flex;
+    
+}
+.modb{
+    font-family: var(--main-font);
+    font-weight: bolder;
 }

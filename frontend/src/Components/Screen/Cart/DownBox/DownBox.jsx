@@ -14,7 +14,6 @@ const CustomCard = React.forwardRef(({ children, ...rest }, ref) => (
 ))
 
 const Result=React.lazy(()=>import('./Result'));
-
 const DownBox = (props) => {
 
   return (
@@ -36,7 +35,7 @@ const DownBox = (props) => {
         
       </div>
       <div className={st.results}>
-        <Result searchResults={props.searchResults}></Result>
+        <Result searchResults={props.searchResults} typing={props.typing}></Result>
       </div>
     </div >
   )

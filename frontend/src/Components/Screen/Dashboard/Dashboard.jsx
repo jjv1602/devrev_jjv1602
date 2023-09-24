@@ -28,7 +28,7 @@ const Dashboard = () => {
   }
   useEffect(()=>{
     typing();
-  },[])
+  },[searchResults])
   return (
     <div className={st.body}>
       <Navbar act="Home"></Navbar>

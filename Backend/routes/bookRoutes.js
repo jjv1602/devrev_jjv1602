@@ -1,5 +1,5 @@
 const express=require('express');
-const { getBooks,getBooksbyindividual,addBook,rent,returns_book }=require('../Controllers/libController');
+const { getBooks,getBooksbyindividual,addBook,rent,returns_book, wishlist,getwishlist }=require('../Controllers/libController');
 const { protect } = require('../middlewares/authMiddleware');
 const router=express.Router()
 
@@ -16,5 +16,11 @@ router.route('/rent').put(protect,rent);
 
 // Returns a book 
 router.route('/returns').put(protect,returns_book);
+
+// Wishlist book
+router.route('/wishlist').put(protect,wishlist);
+
+// Get Wishlist books 
+router.route('/getwishlist').get(protect,getwishlist);
 
 module.exports=router;

@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon backend/index.js",
-    "client":"npm start --prefix frontend",
-    "dev":"concurrently \"npm start\" \"npm run client \""
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm start\" \"npm run client \""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.3.0",
     "dotenv": "^16.0.1",
