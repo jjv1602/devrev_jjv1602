@@ -59,5 +59,11 @@ const authUser = asyncHandler(async (req, res) => {
     }
   });
 
-
-module.exports = { registerUser,authUser};
+const update=asyncHandler(async(req,res)=>{
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  user.password = password;
+  console.log(user.password);
+  res.status(201).json("success");
+})
+module.exports = { registerUser,authUser,update};

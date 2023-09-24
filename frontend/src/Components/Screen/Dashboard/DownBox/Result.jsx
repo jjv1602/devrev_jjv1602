@@ -16,18 +16,18 @@ import { GrFormView } from "react-icons/gr";
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios';
 const Result = (props) => {
-  const toast=useToast();
-  const addtocart = async(book_id) => {
+  const toast = useToast();
+  const addtocart = async (book_id) => {
     try {
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
       const token = userInfo.token;
-      
+
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,   //only Bearer token is accepted so we send token
         },
       };
-      const { data } = await axios.put("/api/books/wishlist",{book_id}, config);
+      const { data } = await axios.put("/api/books/wishlist", { book_id }, config);
       toast({
         title: 'Book Added to cart',
         status: 'success',
@@ -38,8 +38,19 @@ const Result = (props) => {
       console.log(error.message);
     }
   }
-  const rentbook = async(book_id) => {
+  const rentbook = async (book_id) => {
     try {
+      const currentDate = new Date();
+
+      // Format the date in YYYY-MM-DD format
+      const rentalDate = currentDate.toISOString().split('T')[0];
+
+      // Calculate the expiry date (30 days from the current date)
+      const exp = new Date(currentDate);
+      exp.setDate(currentDate.getDate() + 30);
+
+      // Format the expiry date in YYYY-MM-DD format
+      const expiryDate = exp.toISOString().split('T')[0];
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
       const token = userInfo.token;
       const config = {
@@ -47,7 +58,7 @@ const Result = (props) => {
           Authorization: `Bearer ${token}`,   //only Bearer token is accepted so we send token
         },
       };
-      const { data } = await axios.put("/api/books/rent",{book_id}, config);
+      const { data } = await axios.put("/api/books/rent", { book_id,rentalDate,expiryDate }, config);
       toast({
         title: 'Book Rented You Can Check in Borrowed Section',
         status: 'success',
@@ -130,12 +141,12 @@ const Result = (props) => {
               </Modal>
 
               <ButtonGroup size='sm' isAttached variant='outline'>
-                <Button w={'80%'} onClick={()=>addtocart(e._id)}>Add to Cart</Button>
+                <Button w={'80%'} onClick={() => addtocart(e._id)}>Add to Cart</Button>
                 <IconButton aria-label='Add to friends' icon={<BsCart2 />} />
               </ButtonGroup>
 
               <ButtonGroup size='sm' isAttached variant='outline'>
-                <Button w={'80%'} onClick={()=>rentbook(e._id)}>Rent Book </Button>
+                <Button w={'80%'} onClick={() => rentbook(e._id)}>Rent Book </Button>
                 <IconButton aria-label='Add to friends' icon={<BiBookAdd />} />
               </ButtonGroup>
 
