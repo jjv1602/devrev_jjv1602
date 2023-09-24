@@ -1,0 +1,17 @@
+.body{
+    height: 100vh;
+    width: 100vw;
+    display:grid;
+    grid-template-columns: 18vw 82vw;
+}
+.right{
+    height:100vh;
+}
+
+.upperbx{
+    height: 16vh;
+}
+.downbx{
+    height: 80vh;
+    background-color: #f4f5f5;
+}
