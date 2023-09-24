@@ -20,9 +20,6 @@ function App() {
           <Route path="/cart" element={<Cart/>}></Route>
           <Route path="/" element={<LoginPg/>}></Route>
           <Route path="/signup" element={<SignPg/>}></Route>
-          <Route path="/load" element={<Loader/>}></Route>
-          
-
         </Routes>
         </Suspense>
       </BrowserRouter>
