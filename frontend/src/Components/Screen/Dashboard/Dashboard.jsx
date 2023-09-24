@@ -11,8 +11,7 @@ const Dashboard = () => {
     try {
       setSearch(args);
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-      // const token = userInfo.token;
-      const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGU4YWM4MThmNTQwMjY4ZjI5OTIxMCIsImlhdCI6MTY5NTQ1MTg0OSwiZXhwIjoxNjk4MDQzODQ5fQ.Smw3HGAeq2FwMCHj6SxVx9U6V0dTSlHaB-8-zCqzmaQ"
+      const token = userInfo.token;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,   //only Bearer token is accepted so we send token
